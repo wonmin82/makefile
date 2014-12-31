@@ -34,7 +34,7 @@ CXXFLAGS = -O2 -Wall -pedantic -std=c++11
 LDFLAGS  = -static -Wall
 # }}}
 # flags used only when CC is GCC {{{
-STRIPFLAGS := --strip-all
+STRIPFLAGS = --strip-all
 # }}}
 
 RM      ?= rm
