@@ -28,7 +28,7 @@ STRIP   := $(CROSS)strip
 # }}}
 
 # common flags {{{
-DEBUG    = -pg
+DEBUG    = -g -pg
 CFLAGS   = -O2 -Wall -pedantic
 CXXFLAGS = -O2 -Wall -pedantic -std=c++11
 LDFLAGS  = -static -Wall
@@ -112,13 +112,13 @@ endif
 $(OBJS): | $(OBJDIRS)
 
 $(BUILDDIR)/%.c.o: %.c
-	$(CC) $(CFLAGS) $< -c -o $@
+	$(CC) $(CFLAGS) $(DEBUG) $< -c -o $@
 
 $(BUILDDIR)/%.cc.o: %.cc
-	$(CXX) $(CXXFLAGS) $< -c -o $@
+	$(CXX) $(CXXFLAGS) $(DEBUG) $< -c -o $@
 
 $(BUILDDIR)/%.cpp.o: %.cpp
-	$(CXX) $(CXXFLAGS) $< -c -o $@
+	$(CXX) $(CXXFLAGS) $(DEBUG) $< -c -o $@
 
 clean:
 	$(RM) -rfv $(BUILDDIR)
