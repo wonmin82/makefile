@@ -55,7 +55,7 @@ SRCS    := $(call stripwhitespace,$(SRCS))
 SRCDIRS1 := $(shell find . -name '*.$(SRCEXT1)' -exec dirname {} \;)
 SRCDIRS2 := $(shell find . -name '*.$(SRCEXT2)' -exec dirname {} \;)
 SRCDIRS3 := $(shell find . -name '*.$(SRCEXT3)' -exec dirname {} \;)
-SRCDIRS := $(shell echo $(SRCDIRS1) $(SRCDIRS2) $(SRCDIRS3) | sort -u)
+SRCDIRS := $(shell echo $(SRCDIRS1) $(SRCDIRS2) $(SRCDIRS3) | tr " " "\\n" | sort -u | tr "\\n" " " | sed 's/ $$//')
 SRCDIRS := $(call stripwhitespace,$(SRCDIRS))
 
 OBJS1   := $(patsubst %.$(SRCEXT1),$(BUILDDIR)/%.$(SRCEXT1).o,$(SRCS1))
